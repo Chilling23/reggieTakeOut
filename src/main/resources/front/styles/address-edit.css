@@ -1,0 +1,301 @@
+/*#address_edit {*/
+/*  height: 100%;*/
+/*}*/
+/*#address_edit .divHead {*/
+/*  width: 100%;*/
+/*  height: 88rem;*/
+/*  opacity: 1;*/
+/*  background: #333333;*/
+/*  position: relative;*/
+/*}*/
+
+/*#address_edit .divHead .divTitle {*/
+/*  font-size: 18rem;*/
+/*  font-family: PingFangSC, PingFangSC-Regular;*/
+/*  font-weight: 500;*/
+/*  text-align: center;*/
+/*  color: #ffffff;*/
+/*  line-height: 25rem;*/
+/*  letter-spacing: 0;*/
+/*  position: absolute;*/
+/*  bottom: 13rem;*/
+/*  width: 100%;*/
+/*}*/
+
+/*#address_edit .divHead .divTitle i {*/
+/*  position: absolute;*/
+/*  left: 16rem;*/
+/*  top: 50%;*/
+/*  transform: translate(0, -50%);*/
+/*}*/
+
+/*#address_edit .divContent {*/
+/*  height: 100%;*/
+/*  opacity: 1;*/
+/*  background: #ffffff;*/
+/*  padding-left: 9rem;*/
+/*  padding-right: 9rem;*/
+/*}*/
+
+/*#address_edit .divContent .divItem {*/
+/*  height: 55rem;*/
+/*  line-height: 55rem;*/
+/*  font-size: 14rem;*/
+/*  font-family: PingFangSC, PingFangSC-Regular;*/
+/*  font-weight: 500;*/
+/*  text-align: left;*/
+/*  color: #333333;*/
+/*  line-height: 20rem;*/
+/*  letter-spacing: 0rem;*/
+/*  border-bottom: 1px solid #efefef;*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*}*/
+
+/*#address_edit .divContent .divItem .el-input {*/
+/*  width: auto;*/
+/*}*/
+
+/*#address_edit .divContent .divItem input {*/
+/*  border: 0;*/
+/*  padding: 0;*/
+/*}*/
+
+/*#address_edit .divContent .divItem .inputUser {*/
+/*  width: 150rem;*/
+/*}*/
+
+/*#address_edit .divContent .divItem span {*/
+/*  display: block;*/
+/*}*/
+
+/*#address_edit .divContent .divItem span:first-child {*/
+/*  margin-right: 12rem;*/
+/*  white-space: nowrap;*/
+/*  width: 69rem;*/
+/*}*/
+
+/*#address_edit .divContent .divItem .spanChecked {*/
+/*  width: 50rem;*/
+/*}*/
+
+/*#address_edit .divContent .divItem span i {*/
+/*  width: 16rem;*/
+/*  height: 16rem;*/
+/*  background: url(./../images/checked_false.png);*/
+/*  display: inline-block;*/
+/*  background-size: cover;*/
+/*  vertical-align: sub;*/
+/*}*/
+
+/*#address_edit .divContent .divItem span .iActive {*/
+/*  background: url(./../images/checked_true.png);*/
+/*  background-size: cover;*/
+/*}*/
+
+/*#address_edit .divContent .divItem .spanItem {*/
+/*  width: 34rem;*/
+/*  height: 20rem;*/
+/*  opacity: 1;*/
+/*  border: 1px solid #e5e4e4;*/
+/*  border-radius: 3rem;*/
+/*  text-align: center;*/
+/*  margin-right: 10rem;*/
+/*  border-radius: 2px;*/
+/*  font-family: PingFangSC, PingFangSC-Regular;*/
+/*  font-weight: 400;*/
+/*  color: #333333;*/
+/*}*/
+
+/*#address_edit .divContent .divItem .spanActiveCompany {*/
+/*  background: #e1f1fe;*/
+/*}*/
+
+/*#address_edit .divContent .divItem .spanActiveHome {*/
+/*  background: #fef8e7;*/
+/*}*/
+
+/*#address_edit .divContent .divItem .spanActiveSchool {*/
+/*  background: #e7fef8;*/
+/*}*/
+
+/*#address_edit .divContent .divItem .el-input__inner {*/
+/*  font-size: 13px;*/
+/*  font-family: PingFangSC, PingFangSC-Regular;*/
+/*  font-weight: 400;*/
+/*  text-align: left;*/
+/*  color: #333333;*/
+/*}*/
+
+/*#address_edit .divContent .divSave {*/
+/*  height: 36rem;*/
+/*  opacity: 1;*/
+/*  background: #ffc200;*/
+/*  border-radius: 18rem;*/
+/*  font-size: 15rem;*/
+/*  font-family: PingFangSC, PingFangSC-Regular;*/
+/*  font-weight: 500;*/
+/*  text-align: center;*/
+/*  color: #333333;*/
+/*  line-height: 36rem;*/
+/*  margin-top: 20rem;*/
+/*}*/
+
+/*#address_edit .divContent .divDelete {*/
+/*  height: 36rem;*/
+/*  opacity: 1;*/
+/*  background: #f6f6f6;*/
+/*  border-radius: 18rem;*/
+/*  font-size: 15rem;*/
+/*  font-family: PingFangSC, PingFangSC-Regular;*/
+/*  font-weight: 500;*/
+/*  text-align: center;*/
+/*  color: #333333;*/
+/*  line-height: 36rem;*/
+/*  margin-top: 20rem;*/
+/*}*/
+#address_edit {
+  height: 100%;
+  font-size: 16px;
+}
+
+/* 头部样式 */
+#address_edit .divHead {
+  width: 100%;
+  height: 88px;
+  background: #333333;
+  position: relative;
+}
+
+/* 标题 */
+#address_edit .divHead .divTitle {
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  color: #ffffff;
+  line-height: 88px;
+  position: absolute;
+  width: 100%;
+}
+
+/* 返回按钮 */
+#address_edit .divHead .divTitle i {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* 内容区域 */
+#address_edit .divContent {
+  background: #ffffff;
+  padding: 15px;
+}
+
+/* 每个输入项的样式 */
+#address_edit .divContent .divItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333333;
+  border-bottom: 1px solid #efefef;
+  padding: 12px 0;
+  flex-wrap: wrap; /* 允许换行，防止挤压 */
+}
+
+/* 让文本标签和输入框有足够的间距 */
+#address_edit .divContent .divItem span {
+  display: inline-block;
+  min-width: 100px; /* 适当减小宽度，避免太占空间 */
+  white-space: nowrap;
+  flex-shrink: 0; /* 防止被挤压 */
+}
+
+/* 让输入框自动扩展 */
+#address_edit .divContent .divItem .el-input {
+  flex-grow: 1;
+  max-width: 70%;  /* 限制最大宽度，避免过窄 */
+}
+
+/* 性别选择的间距 */
+#address_edit .divContent .divItem .spanChecked {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+/* 复选框样式 */
+#address_edit .divContent .divItem .spanChecked i {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid #999;
+  margin-right: 5px;
+}
+
+#address_edit .divContent .divItem .spanChecked .iActive {
+  background: gold;
+  border-color: gold;
+}
+
+/* 标签按钮（Label） */
+#address_edit .divContent .divItem .label-container {
+  display: flex;
+  flex-wrap: wrap; /* 允许折行，防止挤压 */
+  gap: 10px; /* 让选项之间有间距 */
+}
+
+/* 选项按钮 */
+#address_edit .divContent .divItem .spanItem {
+  display: inline-block;
+  padding: 6px 12px;
+  border: 1px solid #e5e4e4;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  background: #f0f0f0;
+}
+
+/* 选项按钮不同的背景色 */
+#address_edit .divContent .divItem .spanActiveCompany {
+  background: #e1f1fe;
+}
+
+#address_edit .divContent .divItem .spanActiveHome {
+  background: #fef8e7;
+}
+
+#address_edit .divContent .divItem .spanActiveSchool {
+  background: #e7fef8;
+}
+
+/* 按钮样式 */
+#address_edit .divContent .divSave {
+  height: 50px;
+  background: #ffc200;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  color: #333333;
+  line-height: 50px;
+  margin: 20px auto;
+  width: 80%;
+}
+
+#address_edit .divContent .divDelete {
+  height: 50px;
+  background: #f6f6f6;
+  border-radius: 25px;
+  font-size: 16px;
+  text-align: center;
+  color: #333333;
+  line-height: 50px;
+  margin: 10px auto;
+  width: 80%;
+}

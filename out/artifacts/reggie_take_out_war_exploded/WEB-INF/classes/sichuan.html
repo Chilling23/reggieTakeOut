@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sichuan Cuisine Menu - ReggieTakeout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            background: #fff8e1;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 5px;
+            margin-right: 10px;
+            object-fit: cover;
+            background: #ddd;
+        }
+
+        .menu-item .info {
+            flex: 1;
+            text-align: left;
+        }
+
+        .menu-item h3 {
+            margin: 0;
+            font-size: 16px;
+            color: #d84315;
+        }
+
+        .menu-item p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #444;
+        }
+
+        .menu-item .price {
+            font-weight: bold;
+            color: #ff5722;
+        }
+
+        .menu-item button {
+            background: #ff9800;
+            border: none;
+            padding: 5px 10px;
+            color: white;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .menu-item button:hover {
+            background: #e68900;
+        }
+
+        .cart {
+            margin-top: 20px;
+            text-align: left;
+            background: #ffe0b2;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .cart h3 {
+            margin-bottom: 10px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            padding: 5px 0;
+        }
+
+        .cart-total {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #d84315;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 90%;
+            }
+
+            .menu-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .menu-item img {
+                width: 100%;
+                height: auto;
+                margin-bottom: 10px;
+            }
+
+            .menu-item .info {
+                text-align: center;
+            }
+
+            .menu-item button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Sichuan Cuisine Menu</h2>
+
+    <div class="menu">
+        <div class="menu-item">
+            <img src="https://www.seriouseats.com/thmb/RS1QmUGQtBW4-hbm9H9Ga3azSAI=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__2014__07__2021-02-12-Take-Out-Kung-Pao-Chicken-MHOM-11-c46f6c06713c45c5a287ddbf08779d04.jpg" alt="Kung Pao Chicken">
+            <div class="info">
+                <h3>Kung Pao Chicken</h3>
+                <p>Spicy stir-fried chicken with peanuts and chili.</p>
+                <span class="price">$12.99</span>
+            </div>
+            <button onclick="addToCart('Kung Pao Chicken', 12.99)">Add</button>
+        </div>
+
+        <div class="menu-item">
+            <img src="https://thewoksoflife.com/wp-content/uploads/2019/06/mapo-tofu-10-1157x1536.jpg" alt="Mapo Tofu">
+            <div class="info">
+                <h3>Mapo Tofu</h3>
+                <p>Soft tofu with minced pork in a spicy Sichuan sauce.</p>
+                <span class="price">$10.99</span>
+            </div>
+            <button onclick="addToCart('Mapo Tofu', 10.99)">Add</button>
+        </div>
+
+        <div class="menu-item">
+            <img src="https://thewoksoflife.com/wp-content/uploads/2015/10/hot-pot-13.jpg" alt="Sichuan Hot Pot">
+            <div class="info">
+                <h3>Sichuan Hot Pot</h3>
+                <p>Rich and spicy broth with fresh ingredients.</p>
+                <span class="price">$22.99</span>
+            </div>
+            <button onclick="addToCart('Sichuan Hot Pot', 22.99)">Add</button>
+        </div>
+
+        <div class="menu-item">
+            <img src="https://thewoksoflife.com/wp-content/uploads/2014/11/twice-cooked-pork-7.jpg" alt="Twice-Cooked Pork">
+            <div class="info">
+                <h3>Twice-Cooked Pork</h3>
+                <p>Stir-fried pork belly with garlic and chili.</p>
+                <span class="price">$14.99</span>
+            </div>
+            <button onclick="addToCart('Twice-Cooked Pork', 14.99)">Add</button>
+        </div>
+    </div>
+
+    <div class="cart">
+        <h3>Your Order</h3>
+        <div id="cart-items"></div>
+        <div class="cart-total">Total: $<span id="total-price">0.00</span></div>
+    </div>
+</div>
+
+<script>
+    let cart = [];
+    let totalPrice = 0;
+
+    function addToCart(name, price) {
+        cart.push({ name, price });
+        totalPrice += price;
+        updateCart();
+    }
+
+    function updateCart() {
+        const cartItemsContainer = document.getElementById("cart-items");
+        const totalPriceContainer = document.getElementById("total-price");
+
+        cartItemsContainer.innerHTML = "";
+        cart.forEach(item => {
+            const cartItem = document.createElement("div");
+            cartItem.classList.add("cart-item");
+            cartItem.innerHTML = `<span>${item.name}</span><span>$${item.price.toFixed(2)}</span>`;
+            cartItemsContainer.appendChild(cartItem);
+        });
+
+        totalPriceContainer.innerText = totalPrice.toFixed(2);
+    }
+</script>
+
+</body>
+</html>

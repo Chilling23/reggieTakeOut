@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <title>Reggie</title>
+    <link rel="icon" href="../images/favico.ico">
+
+    <!-- Root font size settings for different screen sizes -->
+    <script src="../js/base.js"></script>
+
+    <!-- Element UI styles -->
+    <link rel="stylesheet" href="../../backend/plugins/element-ui/index.css" />
+
+    <!-- Vant styles -->
+    <link rel="stylesheet" href="../styles/vant.min.css"/>
+
+    <!-- Main styles -->
+    <link rel="stylesheet" href="../styles/index.css" />
+
+    <!-- Page-specific styles -->
+    <link rel="stylesheet" href="../styles/address-edit.css" />
+</head>
+<body>
+<div id="address_edit" class="app">
+    <div class="divHead">
+        <div class="divTitle">
+            <i class="el-icon-arrow-left" @click="goBack"></i>{{title}}
+        </div>
+    </div>
+    <div class="divContent">
+        <div class="divItem">
+            <span>Contact Person:</span>
+            <el-input placeholder=" Enter your name" v-model="form.consignee" maxlength='10' class="inputUser"/></el-input>
+            <span class="spanChecked" @click="form.sex = '1'">
+                <i :class="{iActive:form.sex === '1'}"></i>
+                Mr.
+               </span>
+            <span class="spanChecked" @click="form.sex = '0'">
+                <i :class="{iActive:form.sex === '0'}"></i>
+                Ms.
+               </span>
+        </div>
+        <div class="divItem">
+            <span>Phone Number:</span>
+            <el-input placeholder=" Please enter recipient's phone number" v-model="form.phone" maxlength='20' style="width: calc(100% - 80rem);"/></el-input>
+        </div>
+        <div class="divItem">
+            <span>Delivery Address:</span>
+            <el-input placeholder=" Please enter the delivery address" v-model="form.detail" maxlength='140'/></el-input>
+        </div>
+        <div class="divItem ">
+            <span>Label:</span>
+            <span v-for="(item,index) in labelList" :key="index" @click="form.label = item;activeIndex = index" :class="{spanItem:true,spanActiveSchool:activeIndex === index}">{{item}}</span>
+        </div>
+        <div class="divSave" @click="saveAddress">Save Address</div>
+        <div class="divDelete" @click="deleteAddress" v-if="id">Delete Address</div>
+    </div>
+</div>
+
+<!-- Development version, includes helpful console warnings -->
+<script src="../../backend/plugins/vue/vue.js"></script>
+
+<!-- Import Element UI components -->
+<script src="../../backend/plugins/element-ui/index.js"></script>
+
+<!-- Import Vant styles -->
+<script src="../js/vant.min.js"></script>
+
+<script src="../js/common.js"></script>
+<script src="../api/address.js"></script>
+
+<!-- Import Axios -->
+<script src="../../backend/plugins/axios/axios.min.js"></script>
+<script src="../js/request.js"></script>
+
+<script>
+    new Vue({
+        el:"#address_edit",
+        data(){
+            return {
+                title:'Add New Address',
+                form:{
+                    consignee:'', // Contact person
+                    phone:undefined, // Phone number
+                    sex:'1', // 0 for female, 1 for male
+                    detail:'', // Delivery address
+                    label:'Company', // Address label
+                },
+                labelList:[
+                    'Company', 'Home', 'School'
+                ],
+                id:undefined,
+                activeIndex :0
+            }
+        },
+        computed:{},
+        created(){
+            this.initData();
+        },
+        mounted(){},
+        methods:{
+            goBack(){
+                history.go(-1);
+            },
+            async initData(){
+                const params = parseUrl(window.location.search);
+                this.id = params.id;
+                if(params.id){
+                    this.title = 'Edit Address';
+                    const res = await addressFindOneApi(params.id);
+                    if(res.code === 1){
+                        this.form = res.data;
+                    } else {
+                        this.$notify({ type:'warning', message:res.msg });
+                    }
+                }
+            },
+            async saveAddress(){
+                const form = this.form;
+                if(!form.consignee){
+                    this.$notify({ type:'warning', message:'Please enter the contact person'});
+                    return;
+                }
+                if(!form.phone){
+                    this.$notify({ type:'warning', message:'Please enter the phone number'});
+                    return;
+                }
+                if(!form.detail){
+                    this.$notify({ type:'warning', message:'Please enter the delivery address'});
+                    return;
+                }
+                const reg = /^1[3|4|5|7|8][0-9]{9}$/;
+                if(!reg.test(form.phone)){
+                    this.$notify({ type:'warning', message:'Invalid phone number'});
+                    return;
+                }
+                let res= {};
+                if(this.id){
+                    res = await updateAddressApi(this.form);
+                } else {
+                    res = await addAddressApi(this.form);
+                }
+
+                if(res.code === 1){
+                    window.requestAnimationFrame(()=>{
+                        window.location.replace('/front/page/address.html');
+                    });
+                } else {
+                    this.$notify({ type:'warning', message:res.msg });
+                }
+            },
+            deleteAddress() {
+                this.$dialog.confirm({
+                    title: 'Confirm Deletion',
+                    message: 'Are you sure you want to delete this address?',
+                })
+                    .then(async () => {
+                        const res = await axios.delete(`/addressBook/${this.id}`); // ✅ 直接在 URL 里传递 id
+                        if (res.data.code === 1) {
+                            window.requestAnimationFrame(() => {
+                                window.location.replace('/front/page/address.html');
+                            });
+                        } else {
+                            this.$notify({ type: 'warning', message: res.data.msg });
+                        }
+                    })
+                    .catch(() => {});
+            },
+            // deleteAddress(){
+            //     this.$dialog.confirm({
+            //         title: 'Confirm Deletion',
+            //         message: 'Are you sure you want to delete this address?',
+            //     })
+            //         .then( async () => {
+            //             const res = await deleteAddressApi({ids:this.id });
+            //             if(res.code === 1){
+            //                 window.requestAnimationFrame(()=>{
+            //                     window.location.replace('/front/page/address.html');
+            //                 });
+            //             } else {
+            //                 this.$notify({ type:'warning', message:res.msg });
+            //             }
+            //         })
+            //         .catch(() => {});
+            // },
+        }
+    })
+</script>
+</body>
+</html>
