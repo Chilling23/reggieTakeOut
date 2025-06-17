@@ -1,4 +1,4 @@
-// 查询列表接口
+
 const getDishPage = (params) => {
   return $axios({
     url: '/dish/page',
@@ -7,7 +7,7 @@ const getDishPage = (params) => {
   })
 }
 
-// 删除接口
+
 const deleteDish = (ids) => {
   return $axios({
     url: '/dish',
@@ -16,7 +16,7 @@ const deleteDish = (ids) => {
   })
 }
 
-// 修改接口
+
 const editDish = (params) => {
   return $axios({
     url: '/dish',
@@ -25,7 +25,7 @@ const editDish = (params) => {
   })
 }
 
-// 新增接口
+
 const addDish = (params) => {
   return $axios({
     url: '/dish',

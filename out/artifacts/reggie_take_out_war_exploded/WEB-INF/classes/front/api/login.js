@@ -6,6 +6,14 @@ function loginApi(data) {
     })
   }
 
+window.sendMsgApi = function (data) {
+    return axios({
+        url: '/user/sendMsg',
+        method: 'post',
+        data
+    });
+};
+
 function loginoutApi() {
   return $axios({
     'url': '/user/loginout',

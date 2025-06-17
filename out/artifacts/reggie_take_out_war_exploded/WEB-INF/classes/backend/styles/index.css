@@ -21,6 +21,9 @@
   background: #f3f4f7;
   position: relative;
   width: calc(100% - 190px);
+  max-width: 100%;
+  overflow-x: hidden;
+
 }
 .sidebar-container {
   transition: width 0.28s;
@@ -329,5 +332,5 @@
 }
 
 .hide {
-  display: hide;
+  display: none;
 }

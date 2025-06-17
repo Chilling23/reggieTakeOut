@@ -1,4 +1,4 @@
-// 查询列表数据
+
 const getSetmealPage = (params) => {
   return $axios({
     url: '/setmeal/page',
@@ -7,7 +7,7 @@ const getSetmealPage = (params) => {
   })
 }
 
-// 删除数据接口
+
 const deleteSetmeal = (ids) => {
   return $axios({
     url: '/setmeal',
@@ -16,7 +16,7 @@ const deleteSetmeal = (ids) => {
   })
 }
 
-// 修改数据接口
+
 const editSetmeal = (params) => {
   return $axios({
     url: '/setmeal',
@@ -25,7 +25,7 @@ const editSetmeal = (params) => {
   })
 }
 
-// 新增数据接口
+
 const addSetmeal = (params) => {
   return $axios({
     url: '/setmeal',

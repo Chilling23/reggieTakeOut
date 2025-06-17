@@ -96,8 +96,21 @@ i {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
+/*.van-dialog {*/
+/*  overflow: inherit;*/
+/*}*/
 .van-dialog {
-  overflow: inherit;
+  max-height: 80vh; /* 限制弹窗最大高度为视口的 80% */
+  overflow: hidden; /* 防止内容溢出 */
+  display: flex;
+  flex-direction: column; /* 让内容和底部按钮依次排列 */
+}
+
+.van-dialog .divContent {
+  flex-grow: 1; /* 让内容区域自动填充可用空间 */
+  overflow-y: auto; /* 允许弹窗内部滚动 */
+  max-height: 60vh; /* 限制内容区的高度，避免超出 */
+  padding: 10px;
 }
 
 ::-webkit-input-placeholder {
