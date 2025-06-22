@@ -8,4 +8,9 @@ public class Update {
         System.out.println("hello");
 
     }
+
+    public void show2() {
+        System.out.println("hello2");
+
+    }
 }
