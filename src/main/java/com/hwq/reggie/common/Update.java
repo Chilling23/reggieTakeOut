@@ -13,4 +13,9 @@ public class Update {
         System.out.println("hello2");
 
     }
+
+    public void show3() {
+        System.out.println("hello3");
+
+    }
 }
